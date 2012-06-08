@@ -1,0 +1,12 @@
+Alias /junk "/tmp/junk"
+
+<Directory "/tmp/junk">
+
+	Options Indexes
+	AllowOverride None
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+

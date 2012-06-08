@@ -1,0 +1,12 @@
+Alias /ajax-tests "/home/martin/git/apache/wicket/wicket-core/src/"
+
+<Directory "/home/martin/git/apache/wicket/wicket-core/src">
+
+	Options Indexes
+	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+

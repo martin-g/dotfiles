@@ -1,0 +1,3 @@
+#!/bin/bash
+
+svn propedit --revprop -r$1 svn:log 

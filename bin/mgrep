@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TERM=$1
+PATH=$2
+GREP=/bin/grep
+
+$GREP -rnH $TERM $PATH | $GREP -v '\.svn' | $GREP $TERM

@@ -1,0 +1,12 @@
+Alias /git "/home/martin/git"
+
+<Directory "/home/martin/git">
+
+	Options Indexes
+	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -f deps && mvn dependency:tree -o > deps && less deps

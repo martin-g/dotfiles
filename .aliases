@@ -1,0 +1,15 @@
+alias l="ls -laFG --color"
+alias p="ps axuw | grep "
+alias vi="vim"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias w6="cd ~/git/apache/wicket"
+alias w5="cd ~/git/apache/wicket15"
+alias w4="cd ~/git/apache/wicket14"
+alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
+alias ..='cd ..'
+alias g=git
+alias grep="grep --color=auto"
+alias sgrep="grep -r --include='*.scala'"
+alias jgrep="grep -r --include='*.java'"

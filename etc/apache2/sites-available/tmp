@@ -1,0 +1,12 @@
+Alias /work "/home/martin/work/web"
+
+<Directory "/home/martin/work/web">
+
+	Options Indexes
+	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+

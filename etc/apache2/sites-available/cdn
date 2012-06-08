@@ -1,0 +1,35 @@
+Alias /cdn "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/cdn"
+
+<Directory "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/cdn">
+
+	Options Indexes
+	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+
+Alias /js "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/js"
+
+<Directory "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/js">
+
+	Options Indexes
+#	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
+
+Alias /img "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/img"
+
+<Directory "/home/martin/1und1/phoenix-client/target/phoenix-client-1.0-SNAPSHOT/img">
+
+	Options Indexes
+	AllowOverride None AuthConfig
+	
+	Order allow,deny
+	Allow from all
+	
+</Directory>
