@@ -1,9 +1,12 @@
-set input-meta on
-set output-meta on
-set convert-meta off
+# Enable 8bit input
+set meta-flag On
+set input-meta On
 
-set editing-mode vi
-set keymap vi-insert
+# Keep the 8th bit for display
+set output-meta on
+
+# Turns off 8th bit stripping
+set convert-meta off
 
 set completion-map-case on
 
@@ -14,3 +17,15 @@ Control-b: backward-word
 Control-f: forward-word
 Control-a: beginning-of-line
 Control-e: end-of-line
+
+# Make sure we don't output everything on the 1 line
+set horizontal-scroll-mode Off
+
+# none, visible or audible
+set bell-style visible
+
+set editing-mode vi
+#set keymap vi-insert
+
+# ^l clear screen (even in Vi mode)
+Control-l:clear-screen
