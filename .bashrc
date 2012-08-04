@@ -91,6 +91,7 @@ export PATH=~/bin:$PATH
 export EDITOR=vim
 export MC_COLOR_TABLE=":editnormal=lightgray,gray:editbold=yellow,gray:editmarked=black,lightgray"
 export SVN_EDITOR=/home/martin/bin/svneditor
+export JREBEL_PATH="/home/martin/.IntelliJIdea11/config/plugins/jr-ide-idea/lib/jrebel/jrebel.jar"
 
 #export LC_ALL=es_ES.UTF-8
 

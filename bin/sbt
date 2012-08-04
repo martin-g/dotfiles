@@ -1,4 +1,4 @@
 #!/bin/sh
 
-SBT_OPTS="-Xmx512M -XX:MaxPermSize=256M"
+SBT_OPTS="-Xmx1024M -Xms1024M  -XX:MaxPermSize=256M -XX:ReservedCodeCacheSize=256M -Dwicket.configuration=development"
 java $SBT_OPTS -jar /home/martin/devel/sbt-launch.jar "$@"
