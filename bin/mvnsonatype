@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mvn -s ~/.m2/settings.sonatype.xml $* 
