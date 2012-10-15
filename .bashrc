@@ -76,18 +76,18 @@ cd /tmp
 set -o noclobber
 
 export GPGKEY=5F504C16
-export DEVEL_HOME="/home/martin/devel"
+export DEVEL_HOME="$HOME/devel"
 export ANT_HOME="$DEVEL_HOME/ant-latest"
 export MAVEN_HOME="$DEVEL_HOME/maven-latest"
 export M2_HOME=$MAVEN_HOME
 export SCALA_HOME="$DEVEL_HOME/scala-latest"
-export PATH=$HOME/local/node/bin:$PATH
-export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+export PATH="$DEVEL_HOME/node-v0.8.11-linux-x64/bin:$DEVEL_HOME/phantomjs-1.7.0-linux-x86_64/bin:$PATH"
+export JAVA_HOME="$DEVEL_HOME/java-latest"
 export JAVA_5_HOME="/opt/jdk1.5.0_22"
 export MONGODB_HOME="/opt/mongodb"
-export NODE_PATH="$HOME/local/node/bin:$HOME/local/node:$HOME/local/node/lib/node_modules"
-export PATH=$MONGODB_HOME/bin:$ANT_HOME/bin:$MAVEN_HOME/bin:$MVN_SHELL_HOME/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH:/var/lib/gems/1.8/bin
-export PATH=~/bin:$PATH
+export NODE_PATH="$DEVEL_HOME/node/bin:$DEVEL_HOME/node:$DEVEL_HOME/node/lib/node_modules"
+export PATH="$HOME/lib/gsc/bin:$ANT_HOME/bin:$MAVEN_HOME/bin:$MVN_SHELL_HOME/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH:/var/lib/gems/1.8/bin"
+export PATH="~/bin:$PATH"
 export EDITOR=vim
 export MC_COLOR_TABLE=":editnormal=lightgray,gray:editbold=yellow,gray:editmarked=black,lightgray"
 export SVN_EDITOR=/home/martin/bin/svneditor
