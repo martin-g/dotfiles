@@ -1,5 +1,5 @@
 [user]
-#	name = Martin Tzvetanov Grigorov (Apache Wicket)
+  #	name = Martin Tzvetanov Grigorov (Apache Wicket)
 	name = Martin Tzvetanov Grigorov
 	email = mgrigorov@apache.org
 [alias]
@@ -24,26 +24,29 @@
 	today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
 	newauthor = commit --amend --reset-author -C HEAD
 	# add all changed (but not new) files to stage (index):
-    au = add -u
-    # prune all tracking local branches that have been removed from remote:
-    prune-all = !git remote | xargs -n 1 git remote prune
-    # show list of contributors in descending order by number of commits
-    rank = shortlog -sn --no-merges
-    # given a string for an author, try to figure out full name and email:
-    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-    # given any git object, try to show it briefly
-    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-    # Search for a given string in all patches and print commit messages
-    # example: search for any commit that adds or removes string "foobar"
-    #     git searchcommits foobar
-    # example: search commits for string "foobar" in directory src/lib
-    #     git searchcommits foobar src/lib
-    # example: search commits for "foobar", print full diff of commit with 1 line context
-    #     git searchcommits foobar --pickaxe-all -U1 src/lib
-    searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
-    pom = push origin master
+	au = add -u
+	# prune all tracking local branches that have been removed from remote:
+	prune-all = !git remote | xargs -n 1 git remote prune
+	# show list of contributors in descending order by number of commits
+	rank = shortlog -sn --no-merges
+	# given a string for an author, try to figure out full name and email:
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+	# given any git object, try to show it briefly
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	# Search for a given string in all patches and print commit messages
+	# example: search for any commit that adds or removes string "foobar"
+	#     git searchcommits foobar
+	# example: search commits for string "foobar" in directory src/lib
+	#     git searchcommits foobar src/lib
+	# example: search commits for "foobar", print full diff of commit with 1 line context
+	#     git searchcommits foobar --pickaxe-all -U1 src/lib
+	searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
+	pom = push origin master
 	out = log -p origin..@{0}
 	up = pull --rebase
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
+	todo = grep --heading --break --ignore-case -e ' FIX: *' -e ' TODO: *'\n
 [color]
 	branch = auto
 	diff = auto
@@ -52,20 +55,20 @@
 	ui = auto
 	pager = true
 [color "branch"]
-        current = yellow reverse
-        local = yellow
-        remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-        meta = yellow bold
-        frag = magenta bold
-        old = red bold
-        new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 
 [color "status"]
-        added = yellow
-        changed = green
-        untracked = cyan	
+	added = yellow
+	changed = green
+	untracked = cyan
 [core]
 	editor = vim
 	excludesfile = /home/martin/.gitignore
@@ -81,9 +84,15 @@
 [github]
 	user = martin-g
 [push]
+  # 'git push' will push the current branch to its tracking branch
+  # the usual default is to push all branches
 	default = tracking
 [help]
 	autocorrect = 1
 [diff]
 	renames = copies
+
+	# Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+	# instead of a/b/c/d as prefixes for patches
+	mnemonicprefix = true
 

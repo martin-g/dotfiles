@@ -14,3 +14,7 @@ alias grep="grep --color=auto"
 alias sgrep="grep -r --include='*.scala'"
 alias jgrep="grep -r --include='*.java'"
 alias sbt="sbt -Dsbt.resident.limit=2"
+
+alias addM='git status --porcelain | grep "^.M " | cut -c4- | xargs git add'
+alias addQ='git status --porcelain | grep "^?? " | cut -c4- | xargs git add'
+alias addD='git status --porcelain | grep "^.D " | cut -c4- | xargs git rm'

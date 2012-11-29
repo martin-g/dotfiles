@@ -29,3 +29,9 @@ set editing-mode vi
 
 # ^l clear screen (even in Vi mode)
 Control-l:clear-screen
+
+$if mode=vi
+	set keymap vi-command
+	"gg": beginning-of-history
+	"G": end-of-history
+$endif
