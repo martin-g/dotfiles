@@ -47,6 +47,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
 	todo = grep --heading --break --ignore-case -e ' FIX: *' -e ' TODO: *'\n
+  addNotIgnored = ls-files --other --exclude-standard | xargs git add
 [color]
 	branch = auto
 	diff = auto
@@ -73,6 +74,7 @@
 	editor = vim
 	excludesfile = /home/martin/.gitignore
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	autocrlf = input
 
 [pager]
 	status = true
@@ -96,3 +98,5 @@
 	# instead of a/b/c/d as prefixes for patches
 	mnemonicprefix = true
 
+[credential]
+	helper = cache --timeout 86400

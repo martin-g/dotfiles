@@ -2,4 +2,4 @@
 
 export PATH=$PATH:/home/martin/lib/gsc/bin
 
-mvn -s ~/.m2/settings.1und1.xml $* -Pwebde -DskipTests
+mvn -s ~/.m2/settings.1und1-artifactory.xml $* -Pwebde -DskipTests

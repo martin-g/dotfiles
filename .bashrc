@@ -81,7 +81,7 @@ export ANT_HOME="$DEVEL_HOME/ant-latest"
 export MAVEN_HOME="$DEVEL_HOME/maven-latest"
 export M2_HOME=$MAVEN_HOME
 export SCALA_HOME="$DEVEL_HOME/scala-latest"
-export PATH="$DEVEL_HOME/node-v0.8.11-linux-x64/bin:$DEVEL_HOME/phantomjs-1.7.0-linux-x86_64/bin:$PATH"
+export PATH="$DEVEL_HOME/node/bin:$DEVEL_HOME/phantomjs/bin:$PATH"
 export JAVA_HOME="$DEVEL_HOME/java-latest"
 export JAVA_5_HOME="/opt/jdk1.5.0_22"
 export MONGODB_HOME="/opt/mongodb"
@@ -105,3 +105,25 @@ function md {
 }
 
 source ~/.aliases
+
+# Show failed tests among all the surefire results.
+function failedtests() {
+	for DIR in $(find . -maxdepth 3 -type d -name "surefire-reports") ; do
+		ruby -ne 'puts "#$FILENAME : #$&" if $_ =~ /(Failures: [1-9][0-9]*.*|Errors: [1-9][0-9]*.*)/' $DIR/*.txt
+	done
+}
+
+# Show the top tests that took the longest time to run from maven surefire reports
+function slowtests() {
+	FILES=''
+
+	for DIR in $(find . -maxdepth 3 -type d -name "surefire-reports") ; do
+		FILES="$FILES $DIR/*.txt"
+	done
+	
+	head -q -n 4 $FILES \
+		| ruby -ne 'gets; print $_.chomp + " "; gets; print gets' \
+		| ruby -ane 'printf "%8.03f sec: ", $F[-2].to_f; puts $_' \
+		| sort -r \
+		| head -10
+}

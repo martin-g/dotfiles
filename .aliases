@@ -4,7 +4,8 @@ alias vi="vim"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
-alias w6="cd ~/git/apache/wicket"
+alias w7="cd ~/git/apache/wicket"
+alias w6="cd ~/git/apache/wicket-6.x"
 alias w5="cd ~/git/apache/wicket-1.5.x"
 alias w4="cd ~/git/apache/wicket14"
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
@@ -18,3 +19,4 @@ alias sbt="sbt -Dsbt.resident.limit=2"
 alias addM='git status --porcelain | grep "^.M " | cut -c4- | xargs git add'
 alias addQ='git status --porcelain | grep "^?? " | cut -c4- | xargs git add'
 alias addD='git status --porcelain | grep "^.D " | cut -c4- | xargs git rm'
+alias git-root='cd $(git rev-parse --show-toplevel)'
