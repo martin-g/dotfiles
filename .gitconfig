@@ -48,6 +48,8 @@
 	latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
 	todo = grep --heading --break --ignore-case -e ' FIX: *' -e ' TODO: *'\n
   addNotIgnored = ls-files --other --exclude-standard | xargs git add
+	incoming = "!git remote update -p; git log ..@{u}"
+	outgoing = log @{u}..
 [color]
 	branch = auto
 	diff = auto
