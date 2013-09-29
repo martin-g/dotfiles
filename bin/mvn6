@@ -1,0 +1,7 @@
+#!/bin/bash
+
+LC_ALL=bg_BG.UTF-8 
+LANG=bg_BG.UTF-8 
+PATH=$JAVA_6_HOME/bin:$PATH
+
+$M2_HOME/bin/mvn $*
