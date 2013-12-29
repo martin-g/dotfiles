@@ -20,3 +20,5 @@ alias addM='git status --porcelain | grep "^.M " | cut -c4- | xargs git add'
 alias addQ='git status --porcelain | grep "^?? " | cut -c4- | xargs git add'
 alias addD='git status --porcelain | grep "^.D " | cut -c4- | xargs git rm'
 alias git-root='cd $(git rev-parse --show-toplevel)'
+alias git=hub
+alias savePrint='( xsel -b || pbpaste ) | hexdump -c '

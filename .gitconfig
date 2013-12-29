@@ -21,7 +21,7 @@
 	unstage = reset HEAD
 	bl = blame -C
 	new = ls-files --others --exclude-standard
-	today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+	today = log --since=midnight --author='Martin Tzvetanov Grigorov' --oneline
 	newauthor = commit --amend --reset-author -C HEAD
 	# add all changed (but not new) files to stage (index):
 	au = add -u
