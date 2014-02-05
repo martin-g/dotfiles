@@ -1,1 +1,18 @@
-/home/martin/.weather/weatherrc
+[default]
+defargs = vt,ka
+
+[vt]
+description = Veliko Tarnovo
+#forecast = False
+metar = http://weather.noaa.gov/pub/data/observations/metar/decoded/LBGO.TXT
+#zone_forecast = http://weather.noaa.gov/pub/data/forecasts/zone/nc/ncz041.txt
+
+[ka]
+description = Karlsruhe, Germany
+metar = http://weather.noaa.gov/pub/data/observations/metar/decoded/EDSB.TXT
+
+[sf]
+description = Sofia
+#forecast = False
+metar = http://weather.noaa.gov/pub/data/observations/metar/decoded/LBSF.TXT
+#zone_forecast = http://weather.noaa.gov/pub/data/forecasts/zone/nc/ncz041.txt
