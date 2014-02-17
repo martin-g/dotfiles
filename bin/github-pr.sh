@@ -48,12 +48,16 @@ git remote add $username https://github.com/$username/wicket
 echo "Rebasing from remote $username..."
 git pull --rebase $username $branch_name || die "Cannot rebase from $username/$branch_name"
 
-echo
+echo "Deleting remote '$username' after the rebase..."
+git remote remove $username
+
+echo "Merged the Pull Request, going to build the branch..."
+read 
 echo "Building..."
 echo
 mvn clean install
 
-echo "Checking out main branch..."
+echo "Checking out the main branch..."
 git checkout -
 
 echo "Execute 'git merge $pr_branch_name && git branch -d $pr_branch_name' if the build is successful"
