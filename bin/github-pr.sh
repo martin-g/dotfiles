@@ -2,6 +2,7 @@
 
 #
 # Merges Pull Requests from 'https://github.com/apache/wicket' 
+# Uses 'jq' (aptitude install jq) to parse JSON
 #
 # Usage: github-pr.sh 63
 #
