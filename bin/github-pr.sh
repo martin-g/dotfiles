@@ -33,6 +33,9 @@ branch_name=$(echo $json | jq --raw-output '.head .ref')
 # read the name of the fork's owner
 username=$(echo $json | jq --raw-output '.head .user .login')
 
+# read the full_name of the users repo
+repo_full_name=$(echo $json | jq --raw-output '.head .repo .full_name')
+
 # the name of the local temporary branch
 pr_branch_name="pr-$pr_number-$branch_name"
 
@@ -45,8 +48,8 @@ git checkout -b $pr_branch_name
 echo "Deleting remote '$username' in case it exists..."
 git remote remove $username
 
-echo "Adding remote $username - https://github.com/$username/wicket"
-git remote add $username https://github.com/$username/wicket
+echo "Adding remote $username - https://github.com/$repo_full_name"
+git remote add $username https://github.com/$repo_full_name
 
 echo "Rebasing from remote $username..."
 git pull --rebase $username $branch_name || die "Cannot rebase from $username/$branch_name"
