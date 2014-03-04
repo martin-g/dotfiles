@@ -50,33 +50,22 @@ pr_branch_name="pr-$pr_number-$branch_name"
 echo "Deleting branch '$pr_branch_name' in case it exists"
 git branch -D $pr_branch_name 
 
-echo "Deleting remote '$username' in case it exists..."
-git remote remove $username
+echo "Creating the branch $pr_branch_name"
+git checkout -b $pr_branch_name $current_branch_name
 
-echo "Adding remote $username - $repo_clone_url"
-echo "Focussing on branch $branch_name"
-git remote add -t $branch_name $username $repo_clone_url
-
-echo "Fetching remote $username"
-git fetch $username
-
-echo "Creating the branch $pr_branch_name at the starting point $username/$branch_name"
-echo "and checking it out."
-git checkout -b $pr_branch_name $username/$branch_name
-
-echo "Rebasing the pull request on top of branch $current_branch_name"
-git rebase $current_branch_name || die "Cannot rebase $username/$branch_name onto $current_branch_name"
-
-echo "Deleting remote '$username' after the rebase..."
-git remote remove $username
+echo "Pulling the changes from $repo_clone_url $branch_name"
+git pull $repo_clone_url $branch_name
 
 echo "Merged the Pull Request, going to build the branch..."
 read 
 echo "Building..."
 echo
-mvn clean install
+mvn clean install -Pfast
 
-echo "Checking out the main branch..."
-git checkout -
+echo "Running the JavaScript tests..."
+grunt
 
-echo "Execute 'git rebase $pr_branch_name && git branch -d $pr_branch_name' if the build is successful"
+echo "Checking out the main branch - $current_branch_name ..."
+git checkout $current_branch_name
+
+echo "Execute 'git merge $pr_branch_name && git push origin $current_branch_name && git branch -d $pr_branch_name' if the build is successful"
