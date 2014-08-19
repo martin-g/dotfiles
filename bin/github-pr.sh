@@ -1,6 +1,8 @@
 #!/bin/bash
 #set -x
 #trap read debug
+set -o nounset
+set -o errexit
 
 #
 # Merges Pull Requests from 'https://github.com/apache/wicket' 
@@ -17,7 +19,8 @@ pr_number=$1
 
 function die
 {
-	echo "ERROR: $1" 1>&2
+	local prefix="[$(date +%Y/%m/%d\ %H:%M:%S)]: "
+	echo "${prefix} ERROR: $@" 1>&2
 	exit 10
 }
 
@@ -60,10 +63,7 @@ echo "Merged the Pull Request, going to build the branch..."
 read 
 echo "Building..."
 echo
-mvn clean install -Pfast
-
-echo "Running the JavaScript tests..."
-grunt
+mvn clean install -Pfast -Pjs-test
 
 echo "Checking out the main branch - $current_branch_name ..."
 git checkout $current_branch_name
