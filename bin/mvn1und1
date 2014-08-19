@@ -2,4 +2,4 @@
 
 export PATH=$PATH:/home/martin/lib/gsc/bin
 
-mvn -s ~/.m2/settings.1und1-artifactory.xml $* -Pwebde -DskipTests -Pless-acceleration-build-only-one-themegroup -Dfindbugs.skip=true -Dpmd.skip=true -Dcpd.skip=true
+mvn -s ~/.m2/settings.1und1-2.xml -Pwebde -DskipTests -Dfindbugs.skip=true -Dpmd.skip=true -Dcpd.skip=true -Djacoco.haltOnFailure=false -DskipJasmineTests=true -Dmaven.javadoc.skip=true $*
