@@ -50,8 +50,11 @@ repo_clone_url=$(echo $json | jq --raw-output '.head .repo .clone_url')
 # the name of the local temporary branch
 pr_branch_name="pr-$pr_number-$branch_name"
 
-echo "Deleting branch '$pr_branch_name' in case it exists"
-git branch -D $pr_branch_name 
+branch_exists=$(git branch --list $pr_branch_name)
+if [ "x$branch_exists" != "x" ]; then
+	echo "Deleting branch '$pr_branch_name'"
+	git branch -D $pr_branch_name 
+fi
 
 echo "Creating the branch $pr_branch_name"
 git checkout -b $pr_branch_name $current_branch_name
