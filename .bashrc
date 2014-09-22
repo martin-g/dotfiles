@@ -130,3 +130,6 @@ function slowtests() {
 		| sort -r \
 		| head -10
 }
+
+# added by travis gem
+[ -f /home/martin/.travis/travis.sh ] && source /home/martin/.travis/travis.sh
