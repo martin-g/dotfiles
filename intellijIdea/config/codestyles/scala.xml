@@ -1,0 +1,11 @@
+<code_scheme name="scala">
+  <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="5555" />
+  <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="1000" />
+  <XML>
+    <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+  </XML>
+  <codeStyleSettings language="Scala">
+    <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
+    <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+  </codeStyleSettings>
+</code_scheme>

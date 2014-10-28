@@ -1,0 +1,40 @@
+<scheme name="mine" version="124" parent_scheme="Default">
+  <option name="LINE_SPACING" value="1.0" />
+  <option name="EDITOR_FONT_SIZE" value="14" />
+  <option name="CONSOLE_FONT_NAME" value="Monospaced" />
+  <option name="CONSOLE_FONT_SIZE" value="12" />
+  <option name="EDITOR_FONT_NAME" value="DialogInput" />
+  <colors>
+    <option name="CARET_COLOR" value="30001" />
+    <option name="RIGHT_MARGIN_COLOR" value="25bf38" />
+    <option name="SELECTION_BACKGROUND" value="e1e628" />
+    <option name="SELECTION_FOREGROUND" value="737373" />
+  </colors>
+  <attributes>
+    <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="30303" />
+        <option name="BACKGROUND" value="a1adbf" />
+        <option name="ERROR_STRIPE_COLOR" value="ccccff" />
+        <option name="EFFECT_TYPE" value="2" />
+      </value>
+    </option>
+    <option name="SCOPE_KEY_Lifecycle">
+      <value>
+        <option name="EFFECT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="SCOPE_KEY_WICKET-3367">
+      <value>
+        <option name="EFFECT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
+      <value>
+        <option name="BACKGROUND" value="f995ff" />
+        <option name="ERROR_STRIPE_COLOR" value="ffcdff" />
+        <option name="EFFECT_TYPE" value="0" />
+      </value>
+    </option>
+  </attributes>
+</scheme>

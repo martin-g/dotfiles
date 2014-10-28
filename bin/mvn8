@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LC_ALL=bg_BG.UTF-8 
+LANG=bg_BG.UTF-8 
+#LC_ALL=de_DE.UTF-8 
+#LANG=de_DE.UTF-8 
+JAVA_HOME=$JAVA_8_HOME
+PATH=$JAVA_HOME/bin:$PATH
+
+mvn $*
