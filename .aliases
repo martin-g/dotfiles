@@ -24,3 +24,4 @@ alias git=hub
 alias savePrint='( xsel -b || pbpaste ) | hexdump -c '
 alias ..='cd ..;'
 alias weather="weather -m"
+alias fuck='sudo $(history -p \!\!)'
