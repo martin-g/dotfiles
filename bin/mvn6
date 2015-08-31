@@ -4,4 +4,5 @@ LC_ALL=bg_BG.UTF-8
 LANG=bg_BG.UTF-8 
 PATH=$JAVA_6_HOME/bin:$PATH
 
+M2_HOME=$DEVEL_HOME/apache-maven-3.2.1
 $M2_HOME/bin/mvn $*
