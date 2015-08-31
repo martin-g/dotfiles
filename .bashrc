@@ -91,12 +91,12 @@ export PLAY_HOME="$DEVEL_HOME/play-latest"
 export MONGODB_HOME="/opt/mongodb"
 export SBT_HOME="$DEVEL_HOME/sbt"
 export NODE_PATH="$DEVEL_HOME/node/bin:$DEVEL_HOME/node:$DEVEL_HOME/node/lib/node_modules"
-export PATH="$HOME/lib/gsc/bin:$ANT_HOME/bin:$MAVEN_HOME/bin:$MVN_SHELL_HOME/bin:$JAVA_7_HOME/bin:$SCALA_HOME/bin:$PATH:/var/lib/gems/1.8/bin"
+export PATH="$ANT_HOME/bin:$MAVEN_HOME/bin:$MVN_SHELL_HOME/bin:$JAVA_8_HOME/bin:$SCALA_HOME/bin:$PATH:/var/lib/gems/1.8/bin"
 export PATH="~/bin:$DEVEL_HOME/grails-2.2.4/bin:$PLAY_HOME:$DEVEL_HOME/apache-ant-1.9.4/bin:$SBT_HOME/bin:$PATH"
 export EDITOR=vim
 export MC_COLOR_TABLE=":editnormal=lightgray,gray:editbold=yellow,gray:editmarked=black,lightgray"
 export SVN_EDITOR=/home/martin/bin/svneditor
-export JREBEL_PATH="/home/martin/.IntelliJIdea11/config/plugins/jr-ide-idea/lib/jrebel/jrebel.jar"
+export PWDSH_SAFE="$HOME/.pwd.sh.safe"
 
 #export LC_ALL=es_ES.UTF-8
 
