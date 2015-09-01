@@ -1,6 +1,0 @@
-#!/bin/bash
-
-export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=128m"
-export PATH=$PATH:/home/martin/lib/gsc/bin
-
-mvn -s ~/.m2/settings.1und1-2.xml -Pwebde -DskipTests -Dfindbugs.skip=true -Dpmd.skip=true -Dcpd.skip=true -Djacoco.haltOnFailure=false -DskipJasmineTests=true -Dmaven.javadoc.skip=true $*
