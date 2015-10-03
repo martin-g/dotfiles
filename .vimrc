@@ -5,7 +5,9 @@ set history=1000 " Lines of history to remember
 set autoread     " Autoread when a file is changed
 
 set number
-syntax on
+syntax enable
+set background=dark
+colors murphy
 set encoding=utf-8
 set showcmd
 
@@ -25,3 +27,13 @@ set shiftwidth=2
 set expandtab
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+
+set rtp+=/home/martin/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
