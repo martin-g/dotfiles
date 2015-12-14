@@ -1,15 +1,22 @@
 # ALIASES
 
+function eshead
+	google-chrome /home/martin/git/elasticsearch-head/_site/index.html
+end
 function l 
 	ls -laFG --color
 end
 
-function p
-	ps axuw | grep $argv
-end 
-
 function vi
 	vim
+end
+
+function grep 
+	command grep --color=auto $argv
+end
+
+function p
+	command ps axuw | gre $argv
 end
 
 function cp

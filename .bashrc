@@ -51,7 +51,7 @@ fi
 
 # MOI
 
-export GREP_OPTIONS="--color=auto"
+#export GREP_OPTIONS="--color=auto"
 export TERM=xterm-color
 
 # set a fancy prompt (non-color, unless we know we "want" color)

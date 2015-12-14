@@ -1,6 +1,5 @@
 
-set -x GREP_OPTIONS "--color=auto"
-set -x TERM xterm-color
+set -x TERM xterm-256color
 
 set -x GPGKEY 5F504C16
 set -x DEVEL_HOME "$HOME/devel"
