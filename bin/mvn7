@@ -1,9 +1,12 @@
 #!/usr/bin/fish
 
-set LC_ALL bg_BG.UTF-8 
-set LANG bg_BG.UTF-8 
-#LC_ALL=de_DE.UTF-8 
-#LANG=de_DE.UTF-8 
+#set LC_ALL bg_BG.UTF-8
+#set LANG bg_BG.UTF-8
+
+set LC_ALL de_DE.UTF-8
+set LANG de_DE.UTF-8
+
+
 set JAVA_HOME /home/martin/devel/java-7
 set PATH $JAVA_HOME/bin $PATH
 

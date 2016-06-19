@@ -66,9 +66,9 @@ echo "Merged the Pull Request, going to build the branch..."
 read 
 echo "Building..."
 echo
-mvn clean install -Pfast -Pjs-test
+mvn8 clean install -Pfast -Pjs-test
 
 echo "Checking out the main branch - $current_branch_name ..."
 git checkout $current_branch_name
 
-echo "Execute 'git merge $pr_branch_name && git push origin $current_branch_name && git branch -d $pr_branch_name' if the build is successful"
+echo "Execute 'git merge $pr_branch_name; and git push origin $current_branch_name; and git branch -d $pr_branch_name' if the build is successful"

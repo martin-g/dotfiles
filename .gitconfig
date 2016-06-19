@@ -2,6 +2,7 @@
   #	name = Martin Tzvetanov Grigorov (Apache Wicket)
 	name = Martin Tzvetanov Grigorov
 	email = mgrigorov@apache.org
+	signingkey = 5F504C16
 [alias]
 	cherry-pick = cherry-pick -x 
 	st = status -s -b
@@ -105,3 +106,5 @@
 
 [credential]
 	helper = cache --timeout 86400
+[rerere]
+	enabled = true
