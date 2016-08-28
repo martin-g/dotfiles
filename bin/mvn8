@@ -7,5 +7,5 @@ set LANG de_DE.UTF-8
 set JAVA_HOME $JAVA_8_HOME
 set PATH $JAVA_HOME/bin $PATH
 
-set M2_HOME $DEVEL_HOME/apache-maven-3.2.1
+set M2_HOME $DEVEL_HOME/apache-maven-3.3.9
 eval mvn $argv
