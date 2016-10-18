@@ -62,6 +62,7 @@ git checkout -b $pr_branch_name $current_branch_name
 echo "Pulling the changes from $repo_clone_url $branch_name"
 git pull --rebase $repo_clone_url $branch_name
 
+echo "Branch: $current_branch_name"
 echo "Merged the Pull Request, going to build the branch..."
 read 
 echo "Building..."
