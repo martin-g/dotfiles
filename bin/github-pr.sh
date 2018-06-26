@@ -46,9 +46,11 @@ repo_full_name=$(echo $json | jq --raw-output '.head .repo .full_name')
 
 # read the clone_url of the users repo
 repo_clone_url=$(echo $json | jq --raw-output '.head .repo .clone_url')
+echo "Remote GitHub url: $repo_clone_url"
 
 # the name of the local temporary branch
 pr_branch_name="pr-$pr_number-$branch_name"
+echo "Remote GitHub branch name: $branch_name"
 
 branch_exists=$(git branch --list $pr_branch_name)
 if [ "x$branch_exists" != "x" ]; then
@@ -56,11 +58,20 @@ if [ "x$branch_exists" != "x" ]; then
 	git branch -D $pr_branch_name 
 fi
 
-echo "Creating the branch $pr_branch_name"
-git checkout -b $pr_branch_name $current_branch_name
+remotes=$(git remote | grep github-pr)
+echo "REMOTES: $remotes"
+if [[ "x$remotes" != "x" ]]; then
+ git remote rm github-pr
+fi
 
-echo "Pulling the changes from $repo_clone_url $branch_name"
-git pull --rebase $repo_clone_url $branch_name
+git remote add github-pr $repo_clone_url
+git fetch github-pr
+
+echo "Creating the branch $pr_branch_name"
+git checkout -b $pr_branch_name github-pr/$branch_name
+
+# echo "Pulling the changes from $repo_clone_url $branch_name"
+git rebase $current_branch_name
 
 echo "Branch: $current_branch_name"
 echo "Merged the Pull Request, going to build the branch..."

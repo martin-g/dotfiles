@@ -8,12 +8,33 @@ function vi
 	vim
 end
 
+function grepjson
+  # Usage: grepjson "https://api.github.com/repos/tomnomnom/gron/commits?per_page=1" "commit.author"
+  gron $argv[1] | fgrep $argv[2] | gron --ungron
+end
+
+function rsync
+  command rsync -e ssh --progress -z -r -v $argv
+end
+
+function topnet
+  command sudo sysdig -pc -c topprocs_net
+end
+
+function ping 
+	command ping -naDO -i 2 $argv
+end
+
 function grep 
-	command gre --color=auto $argv
+	command grep -nH --color=auto $argv
+end
+
+function g
+	command grep --color=auto $argv
 end
 
 function p
-	command ps axuw | gre $argv
+	command ps faxuw | gre $argv
 end
 
 function cp
@@ -21,7 +42,7 @@ function cp
 end
 
 function mv
-	command mv -i $argv
+	command mv -vi $argv
 end
 function rm
 	command rm -i $argv

@@ -4,8 +4,9 @@
 	email = mgrigorov@apache.org
 	signingkey = 5F504C16
 [alias]
+	pull = pull --rebase
 	cherry-pick = cherry-pick -x 
-	st = status -s -b
+	st = status --short --branch
 	ci = commit -v
 	co = checkout
 	br = branch
@@ -22,7 +23,8 @@
 	unstage = reset HEAD
 	bl = blame -C
 	new = ls-files --others --exclude-standard
-	today = log --since=midnight --author='Martin Tzvetanov Grigorov' --oneline
+	today = log --since=midnight --author=Martin --oneline
+	me = log --author='Martin Grigorov' --oneline --all --date=iso --format='%Cred%h%Creset %Cgreen%ad%Creset %Cblue%an%Creset %C(auto)%s%Creset'
 	newauthor = commit --amend --reset-author -C HEAD
 	# add all changed (but not new) files to stage (index):
 	au = add -u
@@ -94,7 +96,8 @@
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
-	default = tracking
+	# default = upstream
+	default = simple
 [help]
 	autocorrect = 1
 [diff]

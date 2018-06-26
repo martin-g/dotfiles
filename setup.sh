@@ -1,7 +1,7 @@
 # Create symbolic links
 dir=$(pwd)
 cd ~
-ln -s $dir/.bashrc
+ln -f -s $dir/.bashrc
 ln -s $dir/.gitconfig
 ln -s $dir/.gitignore
 ln -s $dir/.aliases

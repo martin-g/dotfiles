@@ -135,3 +135,8 @@ function slowtests() {
 
 # added by travis gem
 [ -f /home/martin/.travis/travis.sh ] && source /home/martin/.travis/travis.sh
+
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#    source /etc/profile.d/vte.sh
+#fi
+

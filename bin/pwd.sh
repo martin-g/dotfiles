@@ -1,1 +1,0 @@
-/home/martin/git/pwd.sh/pwd.sh
