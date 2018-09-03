@@ -4,8 +4,24 @@ function l
 	ls -laFG --color
 end
 
+function preview
+  command fzf --preview 'bat --color always {}'
+end
+
+function lll
+  command exa-linux-x86_64  --long --header --git
+end
+
+function top
+  command sudo glances
+end
+
+function cat
+	command bat $argv
+end
+
 function vi
-	vim
+	command vim $argv
 end
 
 function grepjson
@@ -50,8 +66,11 @@ end
 function wsite
 	cd ~/git/apache/wicket-site
 end
-function w8
+function w9
 	cd ~/git/apache/wicket
+end
+function w8
+	cd ~/git/apache/wicket-8.x
 end
 function w7
 	cd ~/git/apache/wicket-7.x

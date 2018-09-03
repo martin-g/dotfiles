@@ -140,3 +140,5 @@ function slowtests() {
 #    source /etc/profile.d/vte.sh
 #fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
