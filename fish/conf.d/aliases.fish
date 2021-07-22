@@ -1,15 +1,63 @@
 # ALIASES
 
+function timed
+  set -l START (date)
+  $argv
+  set -l END (date)
+  echo -e "\n\nCommand '$argv' started at $START and ended at $END"
+end
+
+function myip
+  command curl -4 icanhazip.com
+end
+
+function apache-otp
+  command donkey -f md5 $argv
+end
+
+function yq
+  command docker run --rm -i -v $PWD:/workdir mikefarah/yq yq $argv
+end
+
+function hwinfo
+  command inxi -Fxxxzf
+end
+
+function jflags
+  command java -XX:+UnlockDiagnosticVMOptions -XX:+UnlockExperimentalVMOptions -XX:+PrintFlagsFinal  -version
+end
+
+# bind \eg 'gohome; commandline -f repaint' - Alt+G will go home
+function gohome
+    cd ~
+end
+
+function please
+  command sudo $argv
+end
+
+function k 
+  command kubectl $argv
+end
+
+function http
+  command http --style=native $argv
+end
+
+function tree
+  command tree -Cushf $argv
+end
+
 function l 
 	ls -laFG --color
 end
 
 function preview
-  command fzf --preview 'bat --color always {}'
+  command fzf --preview 'batcat --color always {}'
 end
 
 function lll
-  command exa-linux-x86_64  --long --header --git
+  command exa-linux-x86_64  --long --header --git $argv
 end
 
 function top
@@ -17,7 +65,7 @@ function top
 end
 
 function cat
-	command bat $argv
+	command batcat $argv
 end
 
 function vi
@@ -60,14 +108,23 @@ end
 function mv
 	command mv -vi $argv
 end
+
 function rm
 	command rm -i $argv
 end
+
+function killall
+	command killall --ignore-case --wait --ignore-case $argv
+end
+
 function wsite
 	cd ~/git/apache/wicket-site
 end
-function w9
+function w10
 	cd ~/git/apache/wicket
+end
+function w9
+	cd ~/git/apache/wicket-9.x
 end
 function w8
 	cd ~/git/apache/wicket-8.x
@@ -138,4 +195,26 @@ function tests_slow
 	end
 	
 	head -q -n 4 $FILES | ruby -ne 'gets; print $_.chomp + " "; gets; print gets' | ruby -ane 'printf "%8.03f sec: ", $F[-2].to_f; puts $_' | sort -r | head -10
+end
+
+function macRandom
+  set -l mac (openssl rand -hex 2 | sed 's/\(..\)/\1:/g; s/.$//')
+  setMac f8:59:71:2f:$mac
+end
+
+function macOriginal
+  setMac $ORIG_MAC
+end
+
+function setMac
+	set -l mac $argv[1]
+	#echo "Mac: $mac"
+	sudo ifconfig wlp3s0 down
+	sudo ifconfig wlp3s0 hw ether $mac
+  sudo ifconfig wlp3s0 up
+  echo "Your new physical address is $mac"
+end
+
+function cpu-temperature
+  command cat /sys/class/thermal/thermal_zone*/temp | xargs -I{} awk "BEGIN {printf \"%.2f\n\", {}/1000}"
 end
