@@ -2,21 +2,35 @@
 set -x TERM xterm-256color
 set -x ANDROID_HOME "/home/martin/Android/Sdk"
 set -x GRADLE_HOME "/home/martin/devel/gradle"
-set -x GPGKEY 5F504C16
+#set -x GPGKEY 5F504C16
+set -x GPGKEY 0BE83EB05F504C16
+set -x GPG_TTY (tty)
 set -x DEVEL_HOME "$HOME/devel"
-set -x ANT_HOME "$DEVEL_HOME/latest-ant"
+set -x ANT_HOME "$DEVEL_HOME/apache-ant"
 set -x MAVEN_HOME "$DEVEL_HOME/maven-latest"
 set -x M2_HOME $MAVEN_HOME
 set -x MAVEN_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=1" 
 set -x JAVA_5_HOME "/opt/jdk1.5.0_22"
-set -x JAVA_6_HOME "$DEVEL_HOME/jdk1.6.0_37"
+set -x JAVA_6_HOME "$DEVEL_HOME/java-6"
 set -x JAVA_7_HOME "$DEVEL_HOME/java-7"
 set -x JAVA_8_HOME "$DEVEL_HOME/java-8"
-set -x JAVA_9_HOME "$DEVEL_HOME/java-9"
-set -x JAVA_HOME "$JAVA_8_HOME"
+set -x JAVA_11_HOME "$DEVEL_HOME/jdk-11"
+set -x JAVA_12_HOME "$DEVEL_HOME/jdk-12"
+set -x JAVA_13_HOME "$DEVEL_HOME/jdk-13"
+set -x JAVA_14_HOME "$DEVEL_HOME/jdk-14"
+set -x JAVA_15_HOME "$DEVEL_HOME/jdk-15"
+set -x JAVA_16_HOME "$DEVEL_HOME/jdk-16"
+set -x JAVA_17_HOME "$DEVEL_HOME/jdk-17"
+set -x JAVA_18_HOME "$DEVEL_HOME/jdk-18"
+set -x GRAALVM_HOME "$DEVEL_HOME/graalvm-ce-java11-20.2.0"
+set -x JAVA_HOME "$JAVA_16_HOME"
+set -x JMETER_HOME "$DEVEL_HOME/apache-jmeter-5.2.1"
+set -x VEGETA_HOME "$DEVEL_HOME/vegeta"
 set -x MONGODB_HOME "/opt/mongodb"
 set -x NODE_PATH "$DEVEL_HOME/node" "$DEVEL_HOME/node/lib/node_modules"
-set -x PATH "$HOME/bin" "$DEVEL_HOME/node/bin" "$DEVEL_HOME/grails-2.2.4/bin" "/usr/bin" "/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_8_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" $PATH
+set -x -U GO_HOME "$DEVEL_HOME/go-latest"
+set -x -U GOPATH "$HOME/golang-path"
+set -x PATH "$HOME/bin" "$GO_HOME/bin" "$DEVEL_HOME/node/bin" "$VEGETA_HOME" "$DEVEL_HOME/grails-2.2.4/bin" "$GOPATH/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" "$HOME/.krew/bin/" "$HOME/.cargo/bin/" "$JMETER_HOME/bin" $GRAALVM_HOME/bin $PATH
 set -x EDITOR vim
 set -x MC_COLOR_TABLE ":editnormal=lightgray,gray:editbold=yellow,gray:editmarked=black,lightgray"
 set -x SVN_EDITOR /home/martin/bin/svneditor
@@ -29,3 +43,9 @@ set -x NVM_DIR "$HOME/.nvm"
 
 set -e HISTSIZE
 set -e HISTFILESIZE
+
+
+
+
+# https://ismisepaul.wordpress.com/2015/03/04/http2-traffic-in-wireshark/
+set -x SSLKEYLOGFILE "/home/martin/tls/sslkeylog.log"
