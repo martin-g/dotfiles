@@ -1,5 +1,17 @@
 # ALIASES
 
+function rust_full_check
+  set -l color blue
+  set_color $color; echo "Running tests..."; set_color normal
+  command cargo test -- --test-threads (nproc) --format terse && \
+    set_color $color; echo "Testing the formatting..."; set_color normal && \
+    cargo fmt --all -- --check && \
+    set_color $color; echo "Running clippy..."; set_color normal && \
+    cargo clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && 
+    set_color $color; echo "Testing the documentation..."; set_color normal && \
+    cargo doc
+end
+
 function timed
   set -l START (date)
   $argv
@@ -54,6 +66,14 @@ end
 
 function preview
   command fzf --preview 'batcat --color always {}'
+end
+
+function ll
+  command ~/.cargo/bin/lsd -l $argv
+end
+
+function la
+  command ~/.cargo/bin/lsd --long --almost-all $argv
 end
 
 function lll
@@ -147,11 +167,22 @@ end
 function downloads
 	cd /store2/Downloads
 end
-function movies
-	cd /store1/
-end
+
 function ..
 	cd ..
+end
+
+function ...
+	cd ../..
+end
+
+function ....
+	cd ../../..
+end
+
+
+function b
+  cd -
 end
 
 function addM

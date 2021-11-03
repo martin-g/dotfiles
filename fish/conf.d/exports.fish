@@ -9,11 +9,12 @@ set -x DEVEL_HOME "$HOME/devel"
 set -x ANT_HOME "$DEVEL_HOME/apache-ant"
 set -x MAVEN_HOME "$DEVEL_HOME/maven-latest"
 set -x M2_HOME $MAVEN_HOME
+set -x MVND_HOME "$DEVEL_HOME/mvnd-0.6.0-linux-amd64"
 set -x MAVEN_OPTS "-XX:+TieredCompilation -XX:TieredStopAtLevel=1" 
 set -x JAVA_5_HOME "/opt/jdk1.5.0_22"
 set -x JAVA_6_HOME "$DEVEL_HOME/java-6"
 set -x JAVA_7_HOME "$DEVEL_HOME/java-7"
-set -x JAVA_8_HOME "$DEVEL_HOME/java-8"
+set -x JAVA_8_HOME "/usr/lib/jvm/java-8-openjdk-amd64"
 set -x JAVA_11_HOME "$DEVEL_HOME/jdk-11"
 set -x JAVA_12_HOME "$DEVEL_HOME/jdk-12"
 set -x JAVA_13_HOME "$DEVEL_HOME/jdk-13"
@@ -23,14 +24,17 @@ set -x JAVA_16_HOME "$DEVEL_HOME/jdk-16"
 set -x JAVA_17_HOME "$DEVEL_HOME/jdk-17"
 set -x JAVA_18_HOME "$DEVEL_HOME/jdk-18"
 set -x GRAALVM_HOME "$DEVEL_HOME/graalvm-ce-java11-20.2.0"
-set -x JAVA_HOME "$JAVA_16_HOME"
+set -x JAVA_HOME "$JAVA_17_HOME"
 set -x JMETER_HOME "$DEVEL_HOME/apache-jmeter-5.2.1"
 set -x VEGETA_HOME "$DEVEL_HOME/vegeta"
+set -x DOTNET_HOME "$HOME/.dotnet"
 set -x MONGODB_HOME "/opt/mongodb"
 set -x NODE_PATH "$DEVEL_HOME/node" "$DEVEL_HOME/node/lib/node_modules"
 set -x -U GO_HOME "$DEVEL_HOME/go-latest"
 set -x -U GOPATH "$HOME/golang-path"
-set -x PATH "$HOME/bin" "$GO_HOME/bin" "$DEVEL_HOME/node/bin" "$VEGETA_HOME" "$DEVEL_HOME/grails-2.2.4/bin" "$GOPATH/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" "$HOME/.krew/bin/" "$HOME/.cargo/bin/" "$JMETER_HOME/bin" $GRAALVM_HOME/bin $PATH
+set -x PATH "$HOME/bin" "$GO_HOME/bin" "$DOTNET_HOME" "$DEVEL_HOME/node/bin" "$VEGETA_HOME" "$DEVEL_HOME/grails-2.2.4/bin" "$GOPATH/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" "$HOME/.krew/bin/" "$HOME/.cargo/bin/" "$JMETER_HOME/bin" $GRAALVM_HOME/bin $MVND_HOME/bin $PATH
+set -x RUST_BACKTRACE 1
+set -x RUST_LOG warn
 set -x EDITOR vim
 set -x MC_COLOR_TABLE ":editnormal=lightgray,gray:editbold=yellow,gray:editmarked=black,lightgray"
 set -x SVN_EDITOR /home/martin/bin/svneditor

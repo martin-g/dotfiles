@@ -2,7 +2,7 @@
   #	name = Martin Tzvetanov Grigorov (Apache Wicket)
 	name = Martin Tzvetanov Grigorov
 	email = mgrigorov@apache.org
-	signingkey = 5F504C16
+	signingkey = 0BE83EB05F504C16
 [alias]
 	pull = pull --rebase
 	cherry-pick = cherry-pick -x 
@@ -55,6 +55,11 @@
 	outgoing = log @{u}..
 	gh = "!google-chrome https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)"
 	pr = "!f() { git fetch github refs/pull/$1/head:pr/$1; } ; f"
+    tags = !"git for-each-ref \
+        --sort=taggerdate \
+        --format '%(tag)_,,,_%(taggerdate:raw)_,,,_%(taggername)_,,,_%(subject)' refs/tags \
+        | awk 'BEGIN { FS = \"_,,,_\"  } ; { t=strftime(\"%Y-%m-%d  %H:%M\",$2); printf \"%-20s %-18s %-25s %s\\n\", t, $1, $4, $3  }'"
+	delete-merged = branch --merged master | grep -v "master" | xargs -n 1 git branch -d
 [color]
 	branch = auto
 	diff = auto
@@ -112,3 +117,7 @@
 	helper = cache --timeout 86400
 [rerere]
 	enabled = true
+[commit]
+	gpgsign = true
+[fetch]
+	prune = true
