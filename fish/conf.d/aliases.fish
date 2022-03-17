@@ -1,15 +1,16 @@
 # ALIASES
 
 function rust_full_check
-  set -l color blue
-  set_color $color; echo "Running tests..."; set_color normal
-  command cargo test -- --test-threads (nproc) --format terse && \
-    set_color $color; echo "Testing the formatting..."; set_color normal && \
-    cargo fmt --all -- --check && \
-    set_color $color; echo "Running clippy..."; set_color normal && \
-    cargo clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && 
-    set_color $color; echo "Testing the documentation..."; set_color normal && \
-    cargo doc
+  set -l min_supported_rust_version "1.51.0"
+  set_color blue; echo -e "Formatting the code ...\n"; set_color normal && cargo +nightly fmt --all && \
+  
+  set_color yellow; echo -e "Running tests...\n"; set_color normal; command cargo test -- --test-threads (nproc) --format terse && \
+    
+  set_color red; echo -e "Running clippy...\n"; set_color normal; cargo clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
+
+  set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
+    
+  set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc
 end
 
 function timed
@@ -114,7 +115,7 @@ function grep
 end
 
 function g
-	command grep --color=auto $argv
+	command grep -irnH --color=auto $argv
 end
 
 function p
@@ -201,7 +202,8 @@ function savePrint
 	xsel -b | hexdump -c
 end
 function weather
-	command weather -m
+  set -l city $argv[1]
+	command curl "wttr.in/$city"
 end
 
 function md

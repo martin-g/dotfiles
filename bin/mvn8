@@ -7,6 +7,6 @@
 set JAVA_HOME "/usr/lib/jvm/java-8-openjdk-amd64"
 set PATH $JAVA_HOME/bin $PATH
 
-#set M2_HOME $DEVEL_HOME/maven-latest
+set -l M2_HOME $DEVEL_HOME/maven-latest
 #eval $M2_HOME/bin/mvn -C $argv 
 eval mvnd -C $argv

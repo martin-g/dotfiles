@@ -2,7 +2,7 @@
 #powerline-setup
 
 #function fish_prompt
-#    ~/bin/powerline-shell.py $status --shell bare ^/dev/null
+#    ~/bin/powerline-shell.py $status --shell bare 2>/dev/null
 #end
 
 

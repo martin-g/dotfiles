@@ -7,7 +7,7 @@
 	pull = pull --rebase
 	cherry-pick = cherry-pick -x 
 	st = status --short --branch
-	ci = commit -v
+	ci = commit -v -s
 	co = checkout
 	br = branch
 	w = whatchanged
