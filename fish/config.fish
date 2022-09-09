@@ -12,6 +12,8 @@ starship init fish | source
 
 fish_vi_key_bindings
 
+#atuin init fish | source
+
 if test -z $SSH_AGENT_PID
   eval (ssh-agent -c)
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID

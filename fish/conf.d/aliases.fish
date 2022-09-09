@@ -1,16 +1,40 @@
 # ALIASES
 
-function rust_full_check
-  set -l min_supported_rust_version "1.51.0"
-  set_color blue; echo -e "Formatting the code ...\n"; set_color normal && cargo +nightly fmt --all && \
+function rust_check
+  set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal && cargo +nightly fmt --all && \
   
-  set_color yellow; echo -e "Running tests...\n"; set_color normal; command cargo test -- --test-threads (nproc) --format terse && \
+  set_color yellow; echo -e "Running tests...\n"; set_color normal; command cargo nextest run --test-threads (nproc) && \
     
   set_color red; echo -e "Running clippy...\n"; set_color normal; cargo clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
+  
+  set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc
+end
+
+
+function rust_full_check
+  rust_check
+
+  set -l min_supported_rust_version "1.54.0"
 
   set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
     
-  set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc
+  set_color blue; echo -e "Testing build with Wasm32...\n"; set_color normal; cargo clean; cargo build --target wasm32-unknown-unknown
+end
+
+function calc
+  command eva $argv
+end
+
+function apt
+  command sudo nala $argv
+end
+
+function ping 
+	command ping -naDO -i 2 $argv
+end
+
+function ping
+  command gping $argv
 end
 
 function timed
@@ -66,7 +90,7 @@ function l
 end
 
 function preview
-  command fzf --preview 'batcat --color always {}'
+  command fzf --preview 'bat --color always {}'
 end
 
 function ll
@@ -86,7 +110,7 @@ function top
 end
 
 function cat
-	command batcat $argv
+	command bat $argv
 end
 
 function vi
@@ -106,10 +130,6 @@ function topnet
   command sudo sysdig -pc -c topprocs_net
 end
 
-function ping 
-	command ping -naDO -i 2 $argv
-end
-
 function grep 
 	command grep -nH --color=auto $argv
 end
@@ -119,7 +139,7 @@ function g
 end
 
 function p
-	command ps faxuw | gre $argv
+	command ps faxuw | grep $argv
 end
 
 function cp

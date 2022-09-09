@@ -2,12 +2,12 @@
   #	name = Martin Tzvetanov Grigorov (Apache Wicket)
 	name = Martin Tzvetanov Grigorov
 	email = mgrigorov@apache.org
-	signingkey = 0BE83EB05F504C16
+	signingkey = 53C76F1B07903649
 [alias]
 	pull = pull --rebase
 	cherry-pick = cherry-pick -x 
 	st = status --short --branch
-	ci = commit -v -s
+	ci = commit --verbose --signoff
 	co = checkout
 	br = branch
 	w = whatchanged
@@ -85,7 +85,7 @@
 [core]
 	editor = vim
 	excludesfile = /home/martin/.gitignore
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	whitespace=fix,-indent-with-non-tab,-tab-in-indent,trailing-space,cr-at-eol
 	autocrlf = input
 	safecrlf = true
 
