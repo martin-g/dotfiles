@@ -20,6 +20,8 @@ set -x JAVA_17_HOME "/usr/lib/jvm/java-17-openjdk-amd64"
 set -x JAVA_18_HOME "$DEVEL_HOME/jdk-18"
 set -x JAVA_19_HOME "$DEVEL_HOME/jdk-19"
 set -x JAVA_20_HOME "$DEVEL_HOME/jdk-20"
+set -x JAVA_21_HOME "$DEVEL_HOME/jdk-21"
+set -x JAVA_22_HOME "$DEVEL_HOME/jdk-22"
 set -x GRAALVM_HOME "$DEVEL_HOME/graalvm-ce-java11-20.2.0"
 set -x JAVA_HOME "$JAVA_17_HOME"
 set -x JMETER_HOME "$DEVEL_HOME/apache-jmeter-5.2.1"
@@ -27,10 +29,11 @@ set -x VEGETA_HOME "$DEVEL_HOME/vegeta"
 set -x DOTNET_HOME "$HOME/.dotnet"
 set -x MONGODB_HOME "/opt/mongodb"
 set -x NODE_PATH "$DEVEL_HOME/node.js" "$DEVEL_HOME/node.js/lib/node_modules"
-set -x GO_HOME "$DEVEL_HOME/go-latest"
+set -x GO_HOME "$DEVEL_HOME/go"
 set -x GOPATH "$HOME/golang-path"
 set -x PROTOC_HOME "$DEVEL_HOME/protoc"
-set -x PATH "$HOME/bin" "$GO_HOME/bin" "$DOTNET_HOME" "$DEVEL_HOME/node.js/bin" "$VEGETA_HOME" "$DEVEL_HOME/grails-2.2.4/bin" "$GOPATH/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" "$HOME/.krew/bin/" "$HOME/.cargo/bin/" "$JMETER_HOME/bin" "$GRAALVM_HOME/bin" "$MVND_HOME/bin" "$PROTOC_HOME/bin" $PATH
+set -x NUSHELL_HOME "$DEVEL_HOME/nu"
+set -x PATH "$HOME/bin" "$GO_HOME/bin" "$DOTNET_HOME" "$DEVEL_HOME/node.js/bin" "$VEGETA_HOME" "$DEVEL_HOME/grails-2.2.4/bin" "$GOPATH/bin" "$ANT_HOME/bin" "$MAVEN_HOME/bin" "$MVN_SHELL_HOME/bin" "$JAVA_HOME/bin" "$GRADLE_HOME/bin" "$HOME/.local/bin/" "$HOME/.bloop" "$HOME/.krew/bin/" "$HOME/.cargo/bin/" "$JMETER_HOME/bin" "$GRAALVM_HOME/bin" "$MVND_HOME/bin" "$PROTOC_HOME/bin" $NUSHELL_HOME $PATH
 set -x RUST_BACKTRACE 1
 set -x RUST_LOG warn
 set -x EDITOR vim

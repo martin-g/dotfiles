@@ -1,12 +1,12 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 #LC_ALL=bg_BG.UTF-8 
 #LANG=bg_BG.UTF-8 
 #set LC_ALL de_DE.UTF-8 
 #set LANG de_DE.UTF-8 
-set JAVA_HOME $JAVA_17_HOME
+set JAVA_HOME $JAVA_21_HOME
 set PATH $JAVA_HOME/bin $PATH
 
 set -l M2_HOME $DEVEL_HOME/maven-latest
-eval $M2_HOME/bin/mvn -C $argv -Pbuildbot
-#eval mvnd.sh -C $argv
+#eval $M2_HOME/bin/mvn -C $argv -Pbuildbot
+mvnd.sh --show-version -Pjava21 -C $argv

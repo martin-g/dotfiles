@@ -8,5 +8,5 @@ set JAVA_HOME $JAVA_11_HOME
 set PATH $JAVA_HOME/bin $PATH
 
 set -l M2_HOME $DEVEL_HOME/maven-latest
-#eval $M2_HOME/bin/mvn -C $argv -Pbuildbot
-eval mvnd.sh -C $argv
+eval $M2_HOME/bin/mvn -C $argv -Pbuildbot
+#eval mvnd.sh -C $argv

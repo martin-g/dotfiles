@@ -1,24 +1,47 @@
 # ALIASES
 
+function avro_cherry
+
+  git switch master && git pull --rebase
+  set SHA (git log -1 --no-merges --pretty=%H)
+  echo $SHA
+
+  git switch branch-1.11 && git pull --rebase && git cherry-pick -x $SHA && git push && git switch master
+
+end
+
+function tail
+  command colortail $argv
+end
+
+function rust_clippy
+  cargo clippy --all-features --all-targets -- -Dclippy::all -Dunused_imports
+end
+
+function rust_fmt
+  cargo +nightly fmt --all
+end
+
 function rust_check
-  set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal && cargo +nightly fmt --all && \
-  
-  set_color yellow; echo -e "Running tests...\n"; set_color normal; command cargo nextest run --test-threads (nproc) && \
-    
-  set_color red; echo -e "Running clippy...\n"; set_color normal; cargo clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
-  
-  set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc
+  begin; set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal; rust_fmt; end &&
+  begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy --all-features; end && 
+  begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (nproc); end && 
+  begin; set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc --all-features; end
 end
 
 
 function rust_full_check
   rust_check
 
-  set -l min_supported_rust_version "1.54.0"
+  set -l min_supported_rust_version "1.65.0"
 
-  set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports && \
+  begin; set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports; end && \
     
-  set_color blue; echo -e "Testing build with Wasm32...\n"; set_color normal; cargo clean; cargo build --target wasm32-unknown-unknown
+  begin; set_color blue; echo -e "Testing build with Wasm32...\n"; set_color normal; cargo clean; cargo build --target wasm32-unknown-unknown; end
+end
+
+function mkdir
+  command mkdir -vp $argv
 end
 
 function calc
