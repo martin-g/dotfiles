@@ -10,6 +10,8 @@ thefuck --alias | source
 
 starship init fish | source
 
+zoxide init fish | source
+
 fish_vi_key_bindings
 
 #atuin init fish | source
@@ -22,3 +24,10 @@ if test -z $SSH_AGENT_PID
   ssh-add ~/.ssh/arm64-ubuntu-key.pem
   ssh-add ~/.ssh/id_rsa.git
 end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/martin/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+fish_add_path /home/martin/.pixi/bin

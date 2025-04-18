@@ -2,11 +2,11 @@
 
 function avro_cherry
 
-  git switch master && git pull --rebase
+  git switch main && git pull --rebase
   set SHA (git log -1 --no-merges --pretty=%H)
   echo $SHA
 
-  git switch branch-1.11 && git pull --rebase && git cherry-pick -x $SHA && git push && git switch master
+  git switch branch-1.12 && git pull --rebase && git cherry-pick -x $SHA && git push && git switch main
 
 end
 
@@ -24,7 +24,7 @@ end
 
 function rust_check
   begin; set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal; rust_fmt; end &&
-  begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy --all-features; end && 
+  begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy; end && 
   begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (nproc); end && 
   begin; set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc --all-features; end
 end
@@ -33,7 +33,7 @@ end
 function rust_full_check
   rust_check
 
-  set -l min_supported_rust_version "1.65.0"
+  set -l min_supported_rust_version "1.74.0"
 
   begin; set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports; end && \
     
@@ -75,9 +75,9 @@ function apache-otp
   command donkey -f md5 $argv
 end
 
-function yq
-  command docker run --rm -i -v $PWD:/workdir mikefarah/yq yq $argv
-end
+#function yq
+#  command docker run --rm -i -v $PWD:/workdir mikefarah/yq yq $argv
+#end
 
 function hwinfo
   command inxi -Fxxxzf

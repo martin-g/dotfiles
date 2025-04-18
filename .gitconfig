@@ -2,7 +2,7 @@
   #	name = Martin Tzvetanov Grigorov (Apache Wicket)
 	name = Martin Tzvetanov Grigorov
 	email = mgrigorov@apache.org
-	signingkey = 53C76F1B07903649
+	signingkey = 1EB7A078F1B4EB76DD4856B63194FD8C1AE300EF
 [alias]
 	pull = pull --rebase
 	cherry-pick = cherry-pick -x 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME=${1:-quickstart}
-VERSION=${2:-7.5.0-SNAPSHOT}
+VERSION=${2:-10.0.0}
 GROUP=${3:-com.mycompany}
 REPO="https://repository.apache.org/"
 
