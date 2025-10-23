@@ -133,4 +133,4 @@ log_info ""
 # log_info "     gh pr create --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title \"$PR_TITLE\" --body \"$PR_BODY\""
 # log_info "  2. Or visit: https://github.com/$ORIGINAL_REPO/compare/$PR_BASE_BRANCH...$FORK_OWNER:$NEW_BRANCH"
 
-gh pr create --draft --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title "${PR_TITLE}" --body "To review by auggie" # --body \"$PR_BODY\"
+gh pr create --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title "${PR_TITLE}" --body "${PR_NUMBER}: To review by AI" # --body \"$PR_BODY\"
