@@ -27,16 +27,16 @@ log_warning() {
 }
 
 # Check if required arguments are provided
-if [ $# -ne 1 ]; then
-    log_error "Usage: $0 <original_repo_url>/pull/<pr_number>"
-    log_error "Example: $0 https://github.com/owner/repo/pull/123"
+if [ $# -ne 2 ]; then
+    log_error "Usage: $0 fork-owner <original_repo_url>/pull/<pr_number>"
+    log_error "Example: $0 github-id https://github.com/owner/repo/pull/123"
     exit 1
 fi
 
-ORIGINAL_REPO_URL="$1"
+FORK_OWNER="$1"
+ORIGINAL_REPO_URL="$2"
 REPO_NAME=$(echo $ORIGINAL_REPO_URL | cut -d'/' -f5)
 PR_NUMBER=$(echo $ORIGINAL_REPO_URL | cut -d'/' -f7)
-FORK_OWNER=martin-augment
 FORK_REPO_URL="git@github.com:${FORK_OWNER}/${REPO_NAME}.git"
 
 # Extract owner/repo from URLs
@@ -101,6 +101,11 @@ log_info "PR Title: $PR_TITLE"
 # Create a temporary directory for cloning
 TEMP_DIR=$(mktemp -d)
 trap "rm -rf $TEMP_DIR" EXIT
+trap "gh auth switch --user martin-g" EXIT
+
+gh auth switch --user ${FORK_OWNER}
+
+gh repo sync ${FORK_REPO}
 
 log_info "Cloning fork repository..."
 cd "$TEMP_DIR"
@@ -133,4 +138,4 @@ log_info ""
 # log_info "     gh pr create --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title \"$PR_TITLE\" --body \"$PR_BODY\""
 # log_info "  2. Or visit: https://github.com/$ORIGINAL_REPO/compare/$PR_BASE_BRANCH...$FORK_OWNER:$NEW_BRANCH"
 
-gh pr create --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title "${PR_TITLE}" --body "${PR_NUMBER}: To review by AI" # --body \"$PR_BODY\"
+gh pr create --repo $FORK_REPO --head $FORK_OWNER:$NEW_BRANCH --base $PR_BASE_BRANCH --title "${PR_NUMBER}: ${PR_TITLE}" --body "${PR_NUMBER}: To review by AI" # --body \"$PR_BODY\"
