@@ -22,10 +22,19 @@ function rust_fmt
   cargo +nightly fmt --all
 end
 
+function num_cpus
+  set os = (uname)
+  if test "{$os}" = "Linux"
+    nproc
+  else
+    sysctl -n hw.ncpu
+  end
+end
+
 function rust_check
   begin; set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal; rust_fmt; end &&
   begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy; end && 
-  begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (nproc); end && 
+  begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (num_cpus); end && 
   begin; set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc --all-features; end
 end
 
@@ -33,7 +42,7 @@ end
 function rust_full_check
   rust_check
 
-  set -l min_supported_rust_version "1.74.0"
+  set -l min_supported_rust_version "1.85.0"
 
   begin; set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports; end && \
     
@@ -147,6 +156,14 @@ end
 
 function rsync
   command rsync -e ssh --progress -z -r -v $argv
+end
+
+function fish_ssh_agent
+  command killall ssh-agent
+  eval (ssh-agent -c)
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+  command ssh-add ~/.ssh/id_rsa.git
 end
 
 function topnet
