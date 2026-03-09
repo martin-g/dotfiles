@@ -23,8 +23,8 @@ function rust_fmt
 end
 
 function num_cpus
-  set os = (uname)
-  if test "{$os}" = "Linux"
+  set OS (uname)
+  if test "$OS" = "Linux"
     nproc
   else
     sysctl -n hw.ncpu
