@@ -33,8 +33,8 @@ end
 
 function rust_check
   begin; set_color blue; echo -e "\n\nFormatting the code ...\n"; set_color normal; rust_fmt; end &&
-  begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy; end && 
-  begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (num_cpus); end && 
+  begin; set_color red; echo -e "Running clippy...\n"; set_color normal; rust_clippy; end &&
+  begin; set_color yellow; echo -e "Running tests...\n"; set_color normal; cargo build --all-features && cargo nextest run --all-features --test-threads (num_cpus); end &&
   begin; set_color purple; echo -e "Testing the documentation...\n"; set_color normal; cargo doc --all-features; end
 end
 
@@ -42,10 +42,10 @@ end
 function rust_full_check
   rust_check
 
-  set -l min_supported_rust_version "1.85.0"
+  set -l min_supported_rust_version "1.88.0"
 
   begin; set_color red; echo -e "Running clippy with Rust $min_supported_rust_version...\n"; set_color normal; cargo +{$min_supported_rust_version} clippy  --all-features --all-targets -- -Dclippy::all -Dunused_imports; end && \
-    
+
   begin; set_color blue; echo -e "Testing build with Wasm32...\n"; set_color normal; cargo clean; cargo build --target wasm32-unknown-unknown; end
 end
 
@@ -61,7 +61,7 @@ function apt
   command sudo nala $argv
 end
 
-function ping 
+function ping
 	command ping -naDO -i 2 $argv
 end
 
@@ -105,7 +105,7 @@ function please
   command sudo $argv
 end
 
-function k 
+function k
   command kubectl $argv
 end
 
@@ -117,7 +117,7 @@ function tree
   command tree -Cushf $argv
 end
 
-function l 
+function l
 	ls -laFG --color
 end
 
@@ -158,19 +158,21 @@ function rsync
   command rsync -e ssh --progress -z -r -v $argv
 end
 
-function fish_ssh_agent
-  command killall ssh-agent
-  eval (ssh-agent -c)
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-  command ssh-add ~/.ssh/id_rsa.git
-end
+#function fish_ssh_agent
+#  if test -z "$SSH_AGENT_PID"
+#    command killall ssh-agent
+#    eval (ssh-agent -c)
+#    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+#    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+#  end
+#  command ssh-add ~/.ssh/id_rsa.git
+#end
 
 function topnet
   command sudo sysdig -pc -c topprocs_net
 end
 
-function grep 
+function grep
 	command grep -nH --color=auto $argv
 end
 
@@ -286,7 +288,7 @@ function tests_slow
 	for DIR in (find . -maxdepth 3 -type d -name "surefire-reports")
 		set FILES $FILES $DIR/*.txt
 	end
-	
+
 	head -q -n 4 $FILES | ruby -ne 'gets; print $_.chomp + " "; gets; print gets' | ruby -ane 'printf "%8.03f sec: ", $F[-2].to_f; puts $_' | sort -r | head -10
 end
 
