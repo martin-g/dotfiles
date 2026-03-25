@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script to clone a pull request from a GitHub repository to a fork
 # Usage: ./clone-pr-to-fork.sh <original_repo_url>/pull/<pr_number>
 
 # Make sure you have forked the repository before running this script !
 
-set -eu
+set -eu -o pipefail
 
 # Color codes for output
 RED='\033[0;31m'
@@ -109,17 +109,17 @@ gh repo sync ${FORK_REPO}
 
 log_info "Cloning fork repository..."
 cd "$TEMP_DIR"
-gh repo clone ${FORK_REPO_URL} ${REPO_NAME}
+git clone ${FORK_REPO_URL} ${REPO_NAME} --depth 1 --single-branch --no-tags
 cd ${REPO_NAME}
 
 # Add original repository as upstream remote
 log_info "Adding original repository as upstream remote..."
-#git remote add upstream "$ORIGINAL_REPO_URL"
-git fetch upstream
+git remote add upstream "https://github.com/${ORIGINAL_REPO}"
+# git fetch upstream
 
 # Fetch the PR branch
 log_info "Fetching pull request branch..."
-git fetch upstream "pull/$PR_NUMBER/head:pr-$PR_NUMBER"
+git fetch upstream "pull/$PR_NUMBER/head:pr-$PR_NUMBER" --depth 1 --no-tags
 
 # Create a new branch in the fork based on the PR
 NEW_BRANCH="pr-$PR_NUMBER-$(date -u +%Y-%m-%d-%H-%M-%S)"
