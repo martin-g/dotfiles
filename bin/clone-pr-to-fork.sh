@@ -126,6 +126,21 @@ NEW_BRANCH="pr-$PR_NUMBER-$(date -u +%Y-%m-%d-%H-%M-%S)"
 log_info "Creating new branch: $NEW_BRANCH"
 git checkout -b "$NEW_BRANCH" "pr-$PR_NUMBER"
 
+AI_CONFIG="The AI agents should never link to any issue or a pull request
+in any GitHub repository in the code reviews!
+
+The AI agents should not review AI agents' config files like CLAUDE.md or AGENTS.md!
+"
+
+# Add AI configs
+log_info "Adding AI configs"
+echo "$AI_CONFIG" >> CLAUDE.md
+echo "$AI_CONFIG" >> AGENTS.md
+mkdir -p .cursor
+echo "$AI_CONFIG" >> .cursor/rules.md
+git add -f CLAUDE.md AGENTS.md .cursor/rules.md
+git commit -m "Add CLAUDE.md & AGENTS.md"
+
 # Push to fork
 log_info "Pushing branch to fork..."
 git push origin "$NEW_BRANCH"
